@@ -4,6 +4,7 @@ import com.example.mscustomer.dto.request.CreateCustomerRequest;
 import com.example.mscustomer.dto.request.UpdateCustomerRequest;
 import com.example.mscustomer.dto.response.CustomerResponse;
 import com.example.mscustomer.service.abstraction.CustomerService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,7 +33,7 @@ public class CustomerController {
 
     @PostMapping("/post")
     @ResponseStatus(CREATED)
-    public CustomerResponse createCustomer(@RequestBody CreateCustomerRequest request) {
+    public CustomerResponse createCustomer(@Valid @RequestBody CreateCustomerRequest request) {
         return customerService.createCustomer(request);
     }
 
@@ -50,13 +51,13 @@ public class CustomerController {
 
     @PutMapping("/put/{id}")
     @ResponseStatus(OK)
-    public CustomerResponse updateCustomer(@PathVariable Long id, @RequestBody UpdateCustomerRequest request) {
+    public CustomerResponse updateCustomer(@PathVariable Long id, @Valid @RequestBody UpdateCustomerRequest request) {
         return customerService.updateCustomer(id, request);
     }
 
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(NO_CONTENT)
-    public void deleteCustomer(Long id) {
+    public void deleteCustomer(@PathVariable Long id) {
         customerService.deleteCustomer(id);
     }
 }

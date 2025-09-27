@@ -38,6 +38,12 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 
+	//Liquibase
+	implementation 'org.liquibase:liquibase-core'
+
+	//Validation
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
 	//MySQL Drive
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
